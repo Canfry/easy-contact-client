@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import Header from './components/Header';
+
 function App() {
   const [file, setFile] = useState(null);
   const [contacts, setContacts] = useState();
@@ -37,14 +39,34 @@ function App() {
   }
 
   return (
-    <>
-      <h1>Hello World</h1>
-      <form onSubmit={handleSubmit}>
-        <input type='file' onChange={handleOnChange} />
-        <button type='submit'>Upload</button>
-      </form>
-      <div>{JSON.stringify(contacts)}</div>
-    </>
+    <div className='h-screen flex flex-col relative'>
+      <Header />
+      <main className='grow flex items-center justify-center w-full'>
+        <div>
+          <h1 className='text-5xl font-bold text-slate-600'>
+            Upload your <span className='text-orange-600'>csv</span> files
+          </h1>
+          <p className='text-2xl text-slate-600'>
+            and access the content from a nice and ordered interface
+          </p>
+          <form onSubmit={handleSubmit} className='mt-8'>
+            <input
+              type='file'
+              onChange={handleOnChange}
+              className='::before cursor-pointer'
+            />
+            <button
+              type='submit'
+              className='border border-slate-600 bg-transparent text-orange-600 py-2 px-4 rounded-md'
+            >
+              Upload
+            </button>
+          </form>
+        </div>
+      </main>
+
+      {/* <div>{JSON.stringify(contacts)}</div> */}
+    </div>
   );
 }
 
