@@ -49,7 +49,10 @@ function App() {
           <p className='text-2xl text-slate-600'>
             and access the content from a nice and ordered interface
           </p>
-          <form onSubmit={handleSubmit} className='mt-8'>
+          <form
+            onSubmit={handleSubmit}
+            className='mt-8 flex items-center justify-between'
+          >
             <input
               type='file'
               onChange={handleOnChange}
@@ -57,7 +60,7 @@ function App() {
             />
             <button
               type='submit'
-              className='border border-slate-600 bg-transparent text-orange-600 py-2 px-4 rounded-md'
+              className='border border-slate-600 bg-transparent text-orange-600 py-2 px-4 rounded-md hover:bg-orange-600 hover:border-orange-600 hover:text-white'
             >
               Upload
             </button>
@@ -65,7 +68,14 @@ function App() {
         </div>
       </main>
 
-      {/* <div>{JSON.stringify(contacts)}</div> */}
+      <div>
+        {contacts?.map((contact) => (
+          <>
+            <p key={contact.Name}>{contact.Name}</p>
+            <p>{contact.Mobile}</p>
+          </>
+        ))}
+      </div>
     </div>
   );
 }
