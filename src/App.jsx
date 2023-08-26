@@ -69,12 +69,14 @@ function App() {
       </main>
 
       <div>
-        {contacts?.map((contact) => (
-          <>
-            <p key={contact.Name}>{contact.Name}</p>
-            <p>{contact.Mobile}</p>
-          </>
-        ))}
+        <ul>
+          {Object.keys(contacts[0]).map((key, index) => (
+            <li key={index}>{key}</li>
+          ))}
+          {contacts?.map((contact, index) => (
+            <li key={index}>{Object.values(contact).join(' ')}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
