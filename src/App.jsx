@@ -1,12 +1,19 @@
+import { Route, Routes } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 import { useState } from 'react';
 
-import Header from './components/Header';
+import Home from './pages/Home';
+import About from './pages/About';
+import Files from './pages/Files';
 
 function App() {
   const [file, setFile] = useState(null);
   const [contacts, setContacts] = useState();
 
   const url = 'http://localhost:8000/files/upload';
+
+  const navigate = useNavigate();
 
   function handleOnChange(e) {
     console.log(e.target.files);
@@ -29,6 +36,7 @@ function App() {
         console.log('File uplaoded successfully');
         const data = await res.json();
         setContacts(data);
+        navigate('/files');
         const keys = Object.keys(data[0]);
         const values = Object.values(data[0]);
         console.log(values);
@@ -43,60 +51,16 @@ function App() {
   }
 
   return (
-    <div className='h-screen flex flex-col relative'>
-      <Header />
-      <main className='grow flex items-center justify-center w-full'>
-        <div>
-          <h1 className='text-5xl font-bold text-slate-600'>
-            Upload your <span className='text-orange-600'>csv</span> files
-          </h1>
-          <p className='text-2xl text-slate-600'>
-            and access the content from a nice and ordered interface
-          </p>
-          <form
-            onSubmit={handleSubmit}
-            className='mt-8 flex items-center justify-between'
-          >
-            <input
-              type='file'
-              onChange={handleOnChange}
-              className='::before cursor-pointer'
-            />
-            <button
-              type='submit'
-              className='border border-slate-600 bg-transparent text-orange-600 py-2 px-4 rounded-md hover:bg-orange-600 hover:border-orange-600 hover:text-white'
-            >
-              Upload
-            </button>
-          </form>
-        </div>
-      </main>
-
-      <div>
-        {!contacts ? (
-          <div></div>
-        ) : (
-          <table>
-            <thead>
-              <tr>
-                {Object.keys(contacts[0]).map((key, index) => (
-                  <th key={index}>{key}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {contacts.map((contact, index) => (
-                <tr key={index}>
-                  {Object.values(contact).map((val, index) => (
-                    <td key={index}>{val}</td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </div>
-    </div>
+    <Routes>
+      <Route
+        path='/'
+        element={
+          <Home handleOnChange={handleOnChange} handleSubmit={handleSubmit} />
+        }
+      />
+      <Route path='/about' element={<About />} />
+      <Route path='/files' element={<Files contacts={contacts} />} />
+    </Routes>
   );
 }
 
