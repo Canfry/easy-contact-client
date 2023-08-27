@@ -95,27 +95,6 @@ function App() {
             </tbody>
           </table>
         )}
-
-        {/* <ul> */}
-        {/* {!contacts ? (
-            <li></li>
-          ) : (
-            Object.keys(contacts[0]).map((key, index) => (
-              <li key={index}>{key}</li>
-            ))(
-              contacts.map((contact, index) => (
-                <li key={index}>{Object.values(contact).join(' ')}</li>
-              ))
-            )
-          )} */}
-        {/* {!contacts ? (
-            <h1>No contacts yet</h1>
-          ) : (
-            Object.keys(contacts[0]).map((key, index) => (
-              <li key={index}>{key}</li>
-            ))
-          )}
-        </ul> */}
       </div>
     </div>
   );
