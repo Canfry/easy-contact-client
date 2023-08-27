@@ -19,7 +19,7 @@ export default function Header() {
               Sign In
             </button>
           </Link>
-          <Link className='font-bold'>Register</Link>
+          <Link className='text-slate-800 font-semibold'>Register</Link>
         </ul>
       </nav>
     </header>

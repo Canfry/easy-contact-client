@@ -29,6 +29,10 @@ function App() {
         console.log('File uplaoded successfully');
         const data = await res.json();
         setContacts(data);
+        const keys = Object.keys(data[0]);
+        const values = Object.values(data[0]);
+        console.log(values);
+        console.log(keys);
         console.log(data);
       } else {
         console.error('Failed uploading file');
@@ -69,14 +73,49 @@ function App() {
       </main>
 
       <div>
-        <ul>
-          {Object.keys(contacts[0]).map((key, index) => (
-            <li key={index}>{key}</li>
-          ))}
-          {contacts?.map((contact, index) => (
-            <li key={index}>{Object.values(contact).join(' ')}</li>
-          ))}
-        </ul>
+        {!contacts ? (
+          <div></div>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                {Object.keys(contacts[0]).map((key, index) => (
+                  <th key={index}>{key}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {contacts.map((contact, index) => (
+                <tr key={index}>
+                  {Object.values(contact).map((val, index) => (
+                    <td key={index}>{val}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+
+        {/* <ul> */}
+        {/* {!contacts ? (
+            <li></li>
+          ) : (
+            Object.keys(contacts[0]).map((key, index) => (
+              <li key={index}>{key}</li>
+            ))(
+              contacts.map((contact, index) => (
+                <li key={index}>{Object.values(contact).join(' ')}</li>
+              ))
+            )
+          )} */}
+        {/* {!contacts ? (
+            <h1>No contacts yet</h1>
+          ) : (
+            Object.keys(contacts[0]).map((key, index) => (
+              <li key={index}>{key}</li>
+            ))
+          )}
+        </ul> */}
       </div>
     </div>
   );
