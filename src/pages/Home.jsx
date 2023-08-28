@@ -16,10 +16,15 @@ function Home({ handleOnChange, handleSubmit }) {
             onSubmit={handleSubmit}
             className='mt-8 flex items-center justify-between'
           >
-            <input
+            {/* <input
               type='file'
               onChange={handleOnChange}
               className='::before cursor-pointer'
+            /> */}
+            <input
+              type='file'
+              onChange={handleOnChange}
+              className='file-input file-input-bordered w-full max-w-xs'
             />
             <button
               type='submit'

@@ -16,8 +16,9 @@ function App() {
   const navigate = useNavigate();
 
   function handleOnChange(e) {
-    console.log(e.target.files);
+    console.log(e.target.files[0].name);
     setFile(e.target.files[0]);
+    // console.log(file.name);
   }
 
   async function handleSubmit(e) {
@@ -37,6 +38,7 @@ function App() {
         const data = await res.json();
         setContacts(data);
         navigate('/files');
+        console.log(file.name);
         const keys = Object.keys(data[0]);
         const values = Object.values(data[0]);
         console.log(values);
@@ -59,7 +61,10 @@ function App() {
         }
       />
       <Route path='/about' element={<About />} />
-      <Route path='/files' element={<Files contacts={contacts} />} />
+      <Route
+        path='/files'
+        element={<Files contacts={contacts} file={file} />}
+      />
     </Routes>
   );
 }
