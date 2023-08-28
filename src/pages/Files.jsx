@@ -6,8 +6,8 @@ export default function Files({ contacts, file }) {
     <div className='min-h-screen flex flex-col relative'>
       <Header />
       <main className='grow flex min-w-full'>
-        <div className='grow w-[20%] bg-slate-600 shadow-sm min-h-screen py-8 px-4 flex flex-col gap-8 items-start sticky left-0'>
-          <h1 className='text-white font-bold'>Files</h1>
+        <div className='grow w-[20%] bg-slate-600 shadow-sm min-h-screen py-8 px-4 flex flex-col gap-8 items-start sticky left-0 border-t-4 border-t-slate-600 '>
+          <h1 className='text-white font-bold'> Your files:</h1>
           <ul className='flex flex-col gap-4 items-start text-white'>
             <button className='bg-orange-600 text-white rounded-lg py-1 px-2'>
               {file.name}
@@ -34,7 +34,7 @@ export default function Files({ contacts, file }) {
                 <tr
                   className={`${
                     index % 2 === 1 ? 'bg-white' : 'bg-gray-100'
-                  } text-center `}
+                  } text-center hover:bg-orange-600 hover:text-white `}
                   key={index}
                 >
                   {Object.values(contact).map((val, index) => (

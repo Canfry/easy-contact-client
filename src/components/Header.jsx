@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
-    <header className='px-32 py-8 text-slate-600 flex items-center justify-between grow-0 boder border-b-2 sticky top-0 bg-white z-40'>
+    <header className='px-32 py-8 text-slate-600 flex items-center justify-between grow-0 border-b-2 border-b-slate-600 sticky top-0 bg-white z-40'>
       <div>
         <Link to='/'>
           <h1 className='text-3xl'>
