@@ -19,7 +19,9 @@ export default function Header() {
               Sign In
             </button>
           </Link>
-          <Link className='text-slate-800 font-semibold'>Register</Link>
+          <Link to='/register' className='text-slate-800 font-semibold'>
+            Register
+          </Link>
         </ul>
       </nav>
     </header>

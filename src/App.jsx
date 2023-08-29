@@ -6,6 +6,8 @@ import { useState } from 'react';
 import Home from './pages/Home';
 import About from './pages/About';
 import Files from './pages/Files';
+import Register from './pages/Register';
+import Signin from './pages/Signin';
 
 function App() {
   const [file, setFile] = useState(null);
@@ -65,6 +67,8 @@ function App() {
         path='/files'
         element={<Files contacts={contacts} file={file} />}
       />
+      <Route path='/register' element={<Register />} />
+      <Route path='/signin' element={<Signin />} />
     </Routes>
   );
 }
