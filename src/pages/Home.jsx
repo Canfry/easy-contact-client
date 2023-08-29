@@ -16,19 +16,20 @@ function Home({ handleOnChange, handleSubmit }) {
             onSubmit={handleSubmit}
             className='mt-8 flex items-center justify-between'
           >
-            {/* <input
-              type='file'
-              onChange={handleOnChange}
-              className='::before cursor-pointer'
-            /> */}
-            <input
-              type='file'
-              onChange={handleOnChange}
-              className='file-input file-input-bordered w-full max-w-xs'
-            />
+            <div className='flex items-center'>
+              <span className='bg-slate-600 text-white p-3 cursor-pointer rounded-l-lg'>
+                Browse file
+              </span>
+              <input
+                type='file'
+                onChange={handleOnChange}
+                className='file-input file-input-bordered w-40 max-w-xs [&::file-selector-button]:hidden p-2.5 rounded-l-none'
+              />
+            </div>
+
             <button
               type='submit'
-              className='border border-slate-600 bg-transparent text-orange-600 py-2 px-4 rounded-md hover:bg-orange-600 hover:border-orange-600 hover:text-white'
+              className='border border-slate-600 bg-transparent text-orange-600 py-2.5 px-4 rounded-md hover:bg-orange-600 hover:border-orange-600 hover:text-white'
             >
               Upload
             </button>
